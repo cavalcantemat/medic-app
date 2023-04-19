@@ -1,3 +1,0 @@
-leo - banco
-math - crud
-lima - login
