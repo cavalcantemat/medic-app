@@ -1,5 +1,5 @@
 # Nome do seu programa
-PROG = meu_programa
+PROG = medic-app
 
 # Compilador a ser usado
 CC = gcc
@@ -29,5 +29,5 @@ clean:
 	rm -f $(OBJS) $(PROG)
 
 # Regra para compilar apenas o main.c
-main.o: main.c meu_programa.h
+main.o: main.c medic-app.h
 	$(CC) $(CFLAGS) -c main.c -o main.o
