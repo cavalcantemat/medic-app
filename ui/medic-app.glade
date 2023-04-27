@@ -102,10 +102,10 @@
             </child>
             <child>
               <object class="GtkEntry" id="crm_input">
+                <property name="width-request">370</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="margin-start">500</property>
-                <property name="margin-end">500</property>
+                <property name="halign">center</property>
                 <property name="margin-top">10</property>
               </object>
               <packing>
@@ -132,10 +132,11 @@
             </child>
             <child>
               <object class="GtkEntry" id="password_input">
+                <property name="width-request">370</property>
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="margin-start">500</property>
-                <property name="margin-end">500</property>
+                <property name="halign">center</property>
+                <property name="margin-left">1</property>
                 <property name="margin-top">5</property>
                 <property name="input-purpose">password</property>
               </object>
@@ -370,9 +371,6 @@
             <property name="title" translatable="yes">page1</property>
             <property name="position">1</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
     </child>
