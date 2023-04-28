@@ -1,27 +1,47 @@
 #include <gtk/gtk.h>
 
-int main(int argc, char *argv[]) {
-    GtkBuilder *builder;
-    GtkWidget *window;
+GtkBuilder *builder;
+GtkWidget *window;
 
-    // Inicializa a biblioteca GTK
+void on_login_window_destroy(GtkWidget *widget, gpointer data)
+{
+    gtk_main_quit();
+}
+
+void on_register_bt_clicked(GtkWidget *widget, gpointer data)
+{
+    gtk_main_quit();
+}
+
+void on_login_bt_clicked(GtkWidget *widget, gpointer data)
+{
+    gtk_main_quit();
+}
+
+void on_user_register_btn_clicked(GtkWidget *widget, gpointer data)
+{
+    gtk_main_quit();
+}
+
+int main(int argc, char *argv[])
+{
+
     gtk_init(&argc, &argv);
 
-    // Cria um GtkBuilder e carrega a interface do usuário a partir do arquivo .glade
-    builder = gtk_builder_new();
-    gtk_builder_add_from_file(builder, "ui/interface.glade", NULL);
+    builder = gtk_builder_new_from_file("ui/interface.glade");
 
-    // Cria a janela principal a partir da interface do usuário
-    window = GTK_WIDGET(gtk_builder_get_object(builder, "janela_principal"));
+    gtk_builder_add_callback_symbols(
+            builder,
+            "on_login_window_destroy",      G_CALLBACK(on_login_window_destroy),
+            "on_register_bt_clicked",       G_CALLBACK(on_register_bt_clicked),
+            "on_login_bt_clicked",          G_CALLBACK(on_login_bt_clicked),
+            "on_user_register_btn_clicked", G_CALLBACK(on_user_register_btn_clicked),
+            NULL);
+    gtk_builder_connect_signals(builder, NULL);
 
-    // Conecta o sinal "destroy" da janela ao evento gtk_main_quit
-    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    window = GTK_WIDGET(gtk_builder_get_object(builder, "madic-app"));
 
-    // Mostra a janela
-    gtk_widget_show(window);
-
-    // Executa o loop principal da biblioteca GTK
+    gtk_widget_show_all(window);
     gtk_main();
-
     return 0;
 }
